@@ -41,7 +41,7 @@ Showing all files:
 ### Option 1 – Build from Source
 
 ```bash
-git clone https://github.com/yourusername/devstats.git
+git clone https://github.com/alexnek/devstats.git
 ```
 
 1. Open the solution in Visual Studio 2022
@@ -58,7 +58,7 @@ git clone https://github.com/yourusername/devstats.git
 
 ### Option 2 – Download Prebuilt Executable
 
-1. Go to the [Releases page](https://github.com/yourusername/devstats/releases)
+1. Go to the [Releases page](https://github.com/AlexNek/devstats/releases)
 2. Download the latest `DevStats.exe`
 3. Run it—no installation required
 
@@ -129,4 +129,5 @@ This project is licensed under the MIT License – see the [LICENSE](LICENSE) fi
 
 ## Updates
 
-Check the [Releases page](https://github.com/yourusername/devstats/releases) for the latest updates and features.
+Check the [Releases page](https://github.com/AlexNek/devstats/releases) for the latest updates and features.
+- *V1.0.0*: initial release
