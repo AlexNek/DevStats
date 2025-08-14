@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="DevStats.Plugins.FileExtensionCount.FileExtensionCountCardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             d:DesignHeight="150" d:DesignWidth="250">
+  <StackPanel>
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,8,0,0">
+      <TextBlock Text="Folders: " FontWeight="Bold"/>
+      <TextBlock Text="{Binding FolderCount}" Margin="4,0,16,0"/>
+      <TextBlock Text="Files: " FontWeight="Bold"/>
+      <TextBlock Text="{Binding FilesCount}" Margin="4,0,0,0"/>
+    </StackPanel>
+    <TextBlock Text="{Binding DifferentExtensionsCount, StringFormat='Different extensions: {0}'}"
+               FontWeight="Bold"
+               Margin="0,8,0,0"/>
+    <DataGrid Height="400"
+              ItemsSource="{Binding ExtensionItems, Mode=OneWay}"
+              AutoGenerateColumns="False"
+              Margin="0,12,0,0"
+              CanUserSortColumns="True"
+              MouseDoubleClick="DataGrid_MouseDoubleClick" IsReadOnly="True">
+      <DataGrid.Columns>
+        <DataGridTextColumn Header="Extension" Binding="{Binding Extension}" Width="*" SortMemberPath="Extension"/>
+        <DataGridTextColumn Header="Count" Binding="{Binding Count}" Width="*" SortMemberPath="Count"/>
+      </DataGrid.Columns>
+    </DataGrid>
+  </StackPanel>
+</UserControl>
