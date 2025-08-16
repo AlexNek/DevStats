@@ -61,3 +61,30 @@
 #*.PDF   diff=astextplain
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
+
+
+###############################################################################
+# SECTION: ClickOnce Deployment Integrity
+###############################################################################
+#
+# The global `* text=auto` setting is ideal for source code but causes
+# critical failures for ClickOnce deployments. Git's automatic line-ending
+# conversion (CRLF to LF) modifies the manifest and deployment files after
+# they are built.
+#
+# This modification changes the file's content, which invalidates the
+# cryptographic hash stored in the ClickOnce manifest, leading to a
+# "hash mismatch" error during application installation.
+#
+# The solution is to explicitly unset the `text` attribute for all files
+# related to the ClickOnce deployment. The `-text` directive overrides the
+# global `text=auto` rule for these specific file patterns. This forces
+# Git to treat them as binary, ensuring their contents are never modified
+# and their hashes remain valid.
+#
+*.application -text
+*.manifest    -text
+*.deploy      -text
+*.pfx         -text
+setup.exe     -text
+Launcher.exe  -text
