@@ -35,33 +35,73 @@ Showing all files:
 * Visual Studio 2022 (recommended for building from source)
 
 ---
+## Installation (for Users)
 
-## Installation
+This application uses ClickOnce for a simple installation and automatic updates.
 
-### Option 1 – Build from Source
+#### 1. Download the Installer
 
-```bash
-git clone https://github.com/alexnek/devstats.git
-```
+Click the link below to download the `setup.exe` installer.
 
-1. Open the solution in Visual Studio 2022
-2. Build the project:
+### [**Download and Install DevStats**](https://raw.githubusercontent.com/AlexNek/DevStats/clickonce/setup.exe)
+
+#### 2. Run the Installer
+
+Your browser or Windows may show a security warning because the application is not from the Microsoft Store. This is expected.
+
+*   **If you see a warning from Windows SmartScreen:**
+    1.  Click **"More info"**.
+    2.  Then, click **"Run anyway"**.
+
+The installer will then download the application and its dependencies (.NET Desktop Runtime if needed) and launch DevStats. A shortcut will be added to your Start Menu.
+
+#### 3. Automatic Updates
+
+The application will automatically check for and install new updates each time it starts.
+
+---
+
+## Usage
+
+1.  Launch **DevStats** from the Start Menu or desktop shortcut.
+2.  Click the **Scan Folder** button.
+3.  Select a folder containing a source code project.
+4.  View the generated statistics and charts on the dashboard.
+
+---
+
+## For Developers
+
+### Building from Source
+
+If you want to build the project yourself, you will need:
+
+*   **Visual Studio 2022** with the following workload:
+    *   .NET desktop development
+
+**Steps:**
+
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/AlexNek/DevStats.git
+    ```
+2.  Open the `DevStats.sln` solution file in Visual Studio.
+3.  Build the solution (Build > Build Solution or `Ctrl+Shift+B`).
+    Or Build the project from command line:
 
    ```bash
    dotnet build
    ```
-3. Run the application:
+4.  Run the project (Debug > Start Debugging or `F5`).
 
-   ```bash
-   dotnet run
-   ```
+### How the CI/CD Works
 
-### Option 2 – Download Prebuilt Executable
+This repository is configured with AppVeyor for continuous integration and deployment:
 
-1. Go to the [Releases page](https://github.com/AlexNek/devstats/releases)
-2. Download the latest `DevStats.exe`
-3. Run it—no installation required
-
+1.  **Build:** When code is pushed to the `master` branch, AppVeyor builds the solution.
+2.  **Publish:** It then publishes the project as a ClickOnce application.
+3.  **Deploy to `clickonce` branch:** The build script force-pushes the published application files to the `clickonce` branch. This branch is the live update location for all installed applications.
+4.  **Create GitHub Release:** AppVeyor also creates a new release on the [Releases page](https://github.com/AlexNek/DevStats/releases) and attaches a `.zip` file of the published artifacts as a backup.
 ---
 
 ## Configuration
